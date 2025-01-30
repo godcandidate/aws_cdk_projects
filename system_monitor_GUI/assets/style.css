@@ -1,0 +1,38 @@
+.process-row:hover {
+    background-color: #3a3a3a !important;
+    cursor: pointer;
+}
+
+/* Add smooth transitions */
+.process-row {
+    transition: background-color 0.3s ease;
+}
+
+/* Style the slider */
+.slider {
+    padding: 25px;
+    flex: 1;
+    margin-left: 20px;
+}
+
+.slider .rc-slider-track {
+    background-color: #4CAF50;
+}
+
+.slider .rc-slider-handle {
+    border: solid 2px #4CAF50;
+    background-color: white;
+}
+
+.slider .rc-slider-handle:hover {
+    border-color: #45a049;
+}
+
+.slider .rc-slider-handle:active {
+    border-color: #45a049;
+    box-shadow: 0 0 5px #4CAF50;
+}
+
+.slider .rc-slider-mark-text {
+    color: #bbb;
+}
