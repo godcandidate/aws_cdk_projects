@@ -178,6 +178,4 @@ This will remove the resources associated with the specified stack.
 ### Notes:
 - Ensure your static files include an `index.html` for proper website hosting in the Portfolio Stack.
 - Use `.gitignore` to exclude sensitive or large files from version control.
-- Each stack is independent and can be deployed or destroyed without affecting the other.
-
----
+- Each stack is independent and can be deployed
