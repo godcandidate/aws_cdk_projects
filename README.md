@@ -1,58 +1,158 @@
+Here’s a polished and enhanced version of your README with the AWS architecture diagram (`cdk.png`) embedded:
 
-# Welcome to your CDK Python project!
+---
 
-This is a blank project for CDK development with Python.
+# Deploy Portfolio Static Files to S3 with AWS CDK
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+This project uses **AWS CDK** to create an S3 bucket and upload static files for hosting a portfolio website. The architecture is simple, cost-effective, and scalable.
 
-This project is set up like a standard Python project.  The initialization
-process also creates a virtualenv within this project, stored under the `.venv`
-directory.  To create the virtualenv it assumes that there is a `python3`
-(or `python` for Windows) executable in your path with access to the `venv`
-package. If for any reason the automatic creation of the virtualenv fails,
-you can create the virtualenv manually.
+---
 
-To manually create a virtualenv on MacOS and Linux:
+## Prerequisites
 
-```
-$ python3 -m venv .venv
-```
+Before you begin, ensure the following are installed and configured:
 
-After the init process completes and the virtualenv is created, you can use the following
-step to activate your virtualenv.
+- **Node.js** (LTS version or later)
+- **Python 3.7+** with `pip`
+- **AWS CLI** configured with credentials
+- **AWS CDK** installed globally:
+  ```bash
+  npm install -g aws-cdk
+  ```
+- Virtual environment setup for Python:
+  ```bash
+  python3 -m venv .venv
+  source .venv/bin/activate  # On Windows: .venv\Scripts\activate.bat
+  pip install -r requirements.txt
+  ```
 
-```
-$ source .venv/bin/activate
-```
+---
 
-If you are a Windows platform, you would activate the virtualenv like this:
-
-```
-% .venv\Scripts\activate.bat
-```
-
-Once the virtualenv is activated, you can install the required dependencies.
+## Project Structure
 
 ```
-$ pip install -r requirements.txt
+.
+├── assets/
+│   └── (Your static files here, e.g., index.html, css, js, images)
+├── app.py
+├── requirements.txt
+├── cdk.json
+├── cdk.png (AWS Architecture Diagram)
+└── README.md
 ```
 
-At this point you can now synthesize the CloudFormation template for this code.
+---
 
+## AWS Architecture
+
+Below is the architecture diagram for this project:
+
+![AWS Architecture Diagram](assets/cdk-s3-upload.png)
+
+---
+
+## Steps to Deploy
+
+### 1. Clone the Project
+
+Clone the repository and navigate to the project directory.
+
+```bash
+git clone <repo-url>
+cd <project-name>
 ```
-$ cdk synth
+
+### 2. Add Your Static Files
+
+Place all portfolio static files (e.g., `index.html`, `css`, `images`, etc.) into the `assets` directory.
+
+### 3. Synthesize the CDK Stack
+
+Run the following command to generate the CloudFormation template:
+
+```bash
+cdk synth
 ```
 
-To add additional dependencies, for example other CDK libraries, just add
-them to your `setup.py` file and rerun the `pip install -r requirements.txt`
-command.
+### 4. Deploy the S3 Bucket and Upload Files
 
-## Useful commands
+Deploy the stack to your AWS account and region:
 
- * `cdk ls`          list all stacks in the app
- * `cdk synth`       emits the synthesized CloudFormation template
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk docs`        open CDK documentation
+```bash
+cdk deploy
+```
 
-Enjoy!
+This will create:
+- An S3 bucket for hosting the portfolio.
+- Static files from the `assets` folder automatically uploaded to the S3 bucket.
+
+### 5. Access Your Portfolio
+
+Once the deployment is complete:
+1. The S3 bucket's **Website URL** will be displayed in the terminal.
+2. Open the URL in your browser to view the portfolio.
+
+---
+
+## Useful Commands
+
+| Command                | Description                                      |
+|------------------------|--------------------------------------------------|
+| `cdk synth`            | Generates the CloudFormation template.           |
+| `cdk deploy`           | Deploys the stack to your AWS account.           |
+| `cdk destroy`          | Destroys the deployed stack.                     |
+| `cdk diff`             | Compares the deployed stack with local changes.  |
+| `cdk ls`               | Lists all stacks in the project.                 |
+
+---
+
+## Example Code
+
+The core implementation is in the `app.py` file. Below is an example of the S3 bucket and file upload code:
+
+```python
+from aws_cdk import (
+    aws_s3 as s3,
+    aws_s3_deployment as s3_deployment,
+    core
+)
+
+class PortfolioStack(core.Stack):
+    def __init__(self, scope: core.Construct, id: str, **kwargs) -> None:
+        super().__init__(scope, id, **kwargs)
+
+        # Create S3 Bucket
+        bucket = s3.Bucket(
+            self,
+            "PortfolioBucket",
+            website_index_document="index.html",
+            public_read_access=True,
+        )
+
+        # Deploy static files to the bucket
+        s3_deployment.BucketDeployment(
+            self,
+            "DeployStaticFiles",
+            sources=[s3_deployment.Source.asset("./assets")],
+            destination_bucket=bucket,
+        )
+```
+
+---
+
+## Cleanup
+
+To delete the resources created by this stack:
+
+```bash
+cdk destroy
+```
+
+This will remove the S3 bucket and all its contents.
+
+---
+
+### Notes:
+- Ensure your static files include an `index.html` for proper website hosting.
+- Use `.gitignore` to exclude sensitive or large files from version control.
+
