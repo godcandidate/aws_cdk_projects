@@ -1,7 +1,7 @@
 import aws_cdk as core
 import aws_cdk.assertions as assertions
 
-from portfolio_cdk_app.portfolio_cdk_app_stack import PortfolioCdkAppStack
+from aws_cdk_projects.portfolio_cdk_app_stack import PortfolioCdkAppStack
 
 # example tests. To run these tests, uncomment this file along with the example
 # resource in portfolio_cdk_app/portfolio_cdk_app_stack.py
