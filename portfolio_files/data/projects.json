@@ -1,0 +1,55 @@
+{
+  "projects": [
+    {
+      "name": "Todo",
+      "description": "A full-stack Todo app built using the MERN stack. Features include task creation, updates, and deletion. The app is containerized using Docker and includes CI/CD pipelines powered by Semaphore and GitHub Actions for seamless deployments.",
+      "icon": "fa-tasks",
+      "tools": [
+        "MERN Stack",
+        "Docker",
+        "Semaphore CI",
+        "GitHub Actions"
+      ],
+      "docUrl": "https://docs.todo-app.com",
+      "githubUrl": "https://github.com/yourusername/todo-app"
+    },
+    {
+      "name": "TaskFlow",
+      "description": "A task management system leveraging AWS Serverless architecture. The backend is built with Lambda Functions, Cognito for user authentication, SES for email notifications, and API Gateway. The system is deployed via Amplify, with CI/CD pipelines implemented using GitHub Actions.",
+      "icon": "fa-cloud",
+      "tools": [
+        "AWS Serverless",
+        "Lambda",
+        "Cognito",
+        "API Gateway",
+        "Amplify"
+      ],
+      "docUrl": "https://docs.taskflow.com",
+      "githubUrl": "https://github.com/yourusername/taskflow"
+    },
+    {
+      "name": "Kubernetes Monitoring Stack",
+      "description": "Automated deployment of Prometheus and Grafana for comprehensive cluster monitoring. Includes custom dashboards and alerting rules.",
+      "icon": "fa-kubernetes",
+      "tools": [
+        "Kubernetes",
+        "Prometheus",
+        "Grafana"
+      ],
+      "docUrl": "https://docs.k8s-monitoring.com",
+      "githubUrl": "https://github.com/yourusername/k8s-monitoring"
+    },
+    {
+      "name": "Container Orchestration",
+      "description": "Docker Compose and Kubernetes configurations for a microservices architecture. Features auto-scaling and load balancing.",
+      "icon": "fa-docker",
+      "tools": [
+        "Docker",
+        "Kubernetes",
+        "Helm"
+      ],
+      "docUrl": "https://docs.container-orch.com",
+      "githubUrl": "https://github.com/yourusername/container-orchestration"
+    }
+  ]
+}
