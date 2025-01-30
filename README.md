@@ -1,7 +1,3 @@
-Here’s a polished and enhanced version of your README with the AWS architecture diagram (`cdk.png`) embedded:
-
----
-
 # Deploy Portfolio Static Files to S3 with AWS CDK
 
 This project uses **AWS CDK** to create an S3 bucket and upload static files for hosting a portfolio website. The architecture is simple, cost-effective, and scalable.
