@@ -32,13 +32,18 @@ Before you begin, ensure the following are installed and configured:
 
 ```
 .
-├── assets/
-│   └── (Your static files here, e.g., index.html, css, js, images)
 ├── app.py
-├── requirements.txt
+├── assets
 ├── cdk.json
-├── cdk.png (AWS Architecture Diagram)
-└── README.md
+├── cdk.out
+├── portfolio_cdk_app
+├── portfolio_files 
+│   └── (Your static files here, e.g., index.html, css, js, images)
+├── README.md
+├── requirements-dev.txt
+├── requirements.txt
+├── source.bat
+└── tests
 ```
 
 ---
@@ -110,35 +115,7 @@ Once the deployment is complete:
 
 The core implementation is in the `app.py` file. Below is an example of the S3 bucket and file upload code:
 
-```python
-from aws_cdk import (
-    aws_s3 as s3,
-    aws_s3_deployment as s3_deployment,
-    core
-)
-
-class PortfolioStack(core.Stack):
-    def __init__(self, scope: core.Construct, id: str, **kwargs) -> None:
-        super().__init__(scope, id, **kwargs)
-
-        # Create S3 Bucket
-        bucket = s3.Bucket(
-            self,
-            "PortfolioBucket",
-            website_index_document="index.html",
-            public_read_access=True,
-        )
-
-        # Deploy static files to the bucket
-        s3_deployment.BucketDeployment(
-            self,
-            "DeployStaticFiles",
-            sources=[s3_deployment.Source.asset("./assets")],
-            destination_bucket=bucket,
-        )
-```
-
----
+![s3 code ](assets/code.png)
 
 ## Cleanup
 
