@@ -2,8 +2,9 @@
 package-lock.json
 __pycache__
 .pytest_cache
-.venv
+.portCDKvenv
 *.egg-info
+.env
 
 # CDK asset staging directory
 .cdk.staging
