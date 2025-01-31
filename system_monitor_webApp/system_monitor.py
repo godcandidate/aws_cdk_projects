@@ -181,7 +181,7 @@ if mode == 'one':
     app.layout = html.Div([
         html.Div([
             # Header
-            html.H1('System Monitor Dashboard', style={
+            html.H1('System Resource Monitor', style={
                 'color': COLORS['text'],
                 'textAlign': 'center',
                 'fontFamily': 'Roboto',
