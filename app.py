@@ -5,6 +5,7 @@ import aws_cdk as cdk
 
 from aws_cdk_projects.portfolio_cdk_app_stack import PortfolioCdkAppStack
 from aws_cdk_projects.ec2_setup_stack import MyEc2Stack
+from aws_cdk_projects.jenkins_server_stack import MyJenkinsStack
 from dotenv import load_dotenv 
 
 # Load environment variables from .env file
@@ -20,5 +21,6 @@ app = cdk.App()
 # Define and add stacks
 portfolio_stack = PortfolioCdkAppStack(app, "PortfolioCdkAppStack")
 ec2_stack = MyEc2Stack(app, "MyEc2Stack", env=env)
+jenkins_stack = MyJenkinsStack(app, "MyJenkinsStack", env=env)
 
 app.synth()
