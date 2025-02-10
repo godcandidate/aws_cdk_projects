@@ -81,7 +81,7 @@ class MyJenkinsStack(Stack):
         # Create the EC2 instance in the existing public subnet
         keypair=ec2.KeyPair.from_key_pair_name(self, "MyKeyPair", "todoLab")
         instance = ec2.Instance(self, "webServer",
-            instance_type=ec2.InstanceType("t3.small"),
+            instance_type=ec2.InstanceType("t3.medium"),
             machine_image=ec2.MachineImage.generic_linux({
                 region: amiID 
             }),
